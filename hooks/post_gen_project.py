@@ -2,6 +2,10 @@ import subprocess
 import json
 from pathlib import Path
 
+# initialize git repo
+print('initializing git repo')
+subprocess.run('git init', shell=True)
+
 # create conda env
 subprocess.run('conda env create -f ./env.yml', shell=True)
 
