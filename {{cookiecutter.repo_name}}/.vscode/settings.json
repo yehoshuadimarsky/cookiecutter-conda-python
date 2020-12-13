@@ -1,0 +1,8 @@
+{
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--config ${workspaceFolder}/pyproject.toml"],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--config ${workspaceFolder}/setup.cfg"],
+    "python.pythonPath": "python"
+}

@@ -1,18 +1,15 @@
-#!/usr/bin/env python
-import os
+import subprocess
+import json
+from pathlib import Path
 
-PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
+# create conda env
+subprocess.run('conda env create -f ./env.yml', shell=True)
 
-
-def remove_file(filepath):
-    os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
-
-if __name__ == '__main__':
-
-    if '{{ cookiecutter.open_source_license }}' == 'Proprietary':
-        remove_file('LICENSE')
-
-    if '{{ cookiecutter.include_cli }}' != 'y':
-        remove_file('{{ cookiecutter.package_name }}/__main__.py')
-        remove_file('{{ cookiecutter.package_name }}/cli.py')
-        remove_file('tests/test_cli.py')
+# update VS Code settings python path with new conda env
+print("updating VS Code settings with new python conda env")
+r = subprocess.run('conda info -e', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+line = [x for x in r.stdout.decode().splitlines() if x.split(' ')[0] == '{{ cookiecutter.package_name }}'][0]
+env_path = line.split()[-1]
+config = json.loads(Path('./.vscode/settings.json').read_text())
+config["python.pythonPath"] = env_path
+Path('./.vscode/settings.json').write_text(json.dumps(config, indent=2))
