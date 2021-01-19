@@ -18,7 +18,11 @@ This is my personal preferences for my packages.
 * cookiecutter (`conda install cookiecutter`)
 
 ## Usage
-From the directory you want to creat the project in, run `cookiecutter https://github.com/yehoshuadimarsky/cookiecutter-conda-python.git`.
+From the directory you want to create the project in, run 
+
+```console
+cookiecutter https://github.com/yehoshuadimarsky/cookiecutter-conda-python.git
+```
 
 Once cookiecutter clones the template, you will be asked a series of questions related to your project. After answering the questions asked during installation, a conda Python package will be
 created in your current working directory. This will also automatically create a new conda environment for the project.
