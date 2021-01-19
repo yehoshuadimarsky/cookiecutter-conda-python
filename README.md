@@ -15,7 +15,11 @@ This is my personal preferences for my packages.
 
 ## Requirements
 * conda
-* cookiecutter (`conda install cookiecutter`)
+* cookiecutter (I prefer `conda-forge`)
+
+```console
+conda install cookiecutter -c conda-forge
+```
 
 ## Usage
 From the directory you want to create the project in, run 
